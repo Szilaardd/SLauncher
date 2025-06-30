@@ -21,11 +21,14 @@
             <div>
                 <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'" class="btn btn-success" id="windows">Download</button>
             </div>
+            <div><button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
     </div>
 
 <script>
-
+  document.getElementById('openGameBtn').addEventListener('click', () => {
+    window.electronAPI.openGame();
+  });
 </script>
 </body>
 
