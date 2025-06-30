@@ -29,6 +29,10 @@
   document.getElementById('openGameBtn').addEventListener('click', () => {
     window.electronAPI.openGame();
   });
+
+  setInterval(() => {
+  window.location.reload();
+}, 30000);
 </script>
 </body>
 
