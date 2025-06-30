@@ -18,28 +18,12 @@
             <h6>V1.2.1</h6>
             <div>
                 <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'" id="windows">Download</button>
-                <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'" id="macos">Download</button>
             </div>
         </div>
     </div>
 
 <script>
-(function loadBrandsPage() {
-    var OSName="Unknown OS";
-    if (navigator.appVersion.indexOf("Win")!=-1) { 
-        OSName="Windows";
-    } else {
-        OSName="MacOS";
-    }
-    if(OSName == 'Windows') {
-        document.getElementById("brandsmac").style.display = 'none';
-        document.getElementById("brandspc").style.display="block"; 
-    }
-    if(OSName == 'MacOS') {
-        document.getElementById("brandsmac").style.display="block";
-        document.getElementById("brandspc").style.display = 'none';
-    }
-})();
+
 </script>
 </body>
 
