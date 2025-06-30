@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SLauncher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <title>SLauncher</title>
 </head>
+
 <body>
-    <iframe frameborder="0" src="https://itch.io/embed/3679356?border_width=3&amp;bg_color=252525&amp;fg_color=dad3d3&amp;link_color=0e9200&amp;border_color=ffffff" width="556" height="171"><a href="https://szilard72.itch.io/fantastic-marko">Fantastic Marko by szilard72</a></iframe>
+    <div class="container">
+        <div class="btn btn-primary">
+            <h2>Fantasztikus Márkó</h2>
+            <p>Egy egyszerű platformer játék</p>
+            <h6>V1.2.1</h6>
+            <div>
+                <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'" id="windows">Download</button>
+                <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'" id="macos">Download</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+(function loadBrandsPage() {
+    var OSName="Unknown OS";
+    if (navigator.appVersion.indexOf("Win")!=-1) { 
+        OSName="Windows";
+    } else {
+        OSName="MacOS";
+    }
+    if(OSName == 'Windows') {
+        document.getElementById("brandsmac").style.display = 'none';
+        document.getElementById("brandspc").style.display="block"; 
+    }
+    if(OSName == 'MacOS') {
+        document.getElementById("brandsmac").style.display="block";
+        document.getElementById("brandspc").style.display = 'none';
+    }
+})();
+</script>
 </body>
+
 </html>
