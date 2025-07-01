@@ -18,23 +18,3 @@ html, body{
     margin-right: 30px;
     padding-bottom: 20px;
 }
-
-#download-app{
-    margin: 30px;
-}
-
-#download-app>h3{
-    color: whitesmoke;
-    text-align: center;
-}
-
-#yey{
-  display: block;
-  margin: 0 auto;
-}
-
-#download-app>p{
-    color: lightseagreen;
-    font-weight: bold;
-    font-size: small;
-}
