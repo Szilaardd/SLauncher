@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-       <link rel="stylesheet" href="./css/styles.css">
-        <title>SLauncher</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>SLauncher</title>
 </head>
 
 <body>
@@ -17,42 +17,48 @@
         <div class="badge text-bg-primary" id="fm">
             <h2>Fantasztikus Márkó</h2>
             <p>Just a simple platformer game</p>
+            <small class="small">Engine: Gdevelop</small>
             <h6>V1.2.1</h6>
             <div>
-                <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'" class="btn btn-success" id="windows">Download</button>
+                <button
+                    onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'"
+                    class="btn btn-success" id="windows">Download</button>
             </div>
             <div><button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
         <div class="badge text-bg-danger" id="sfe">
             <h2>Spidey - Flies eater</h2>
             <p>Catch all the flies in a short time!!</p>
+            <small class="small">Engine: Gdevelop</small>
             <h6>V1.0</h6>
             <div>
-                <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'" class="btn btn-success">Download</button>
+                <button
+                    onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
+                    class="btn btn-success">Download</button>
             </div>
-             <div><button id="openGame2" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
+            <div><button id="openGame2" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
-   <div id="news">
-    <h4>- News -</h4>
-    <p>There is currently no new news.</p>
-   </div>
-   
+        <div id="news">
+            <h4>- News -</h4>
+            <p>There is currently no new news.</p>
+        </div>
+
     </div>
 
-<script>
-  document.getElementById('openGameBtn').addEventListener('click', () => {
-    window.electronAPI.openGame();
-  });
+    <script>
+        document.getElementById('openGameBtn').addEventListener('click', () => {
+            window.electronAPI.openGame();
+        });
 
-    document.getElementById('openGame2').addEventListener('click', () => {
-    window.electronAPI.openGame2();
-  });
+        document.getElementById('openGame2').addEventListener('click', () => {
+            window.electronAPI.openGame2();
+        });
 
 
-  setInterval(() => {
-  window.location.reload();
-}, 30000);
-</script>
+        setInterval(() => {
+            window.location.reload();
+        }, 30000);
+    </script>
 </body>
 
 </html>
