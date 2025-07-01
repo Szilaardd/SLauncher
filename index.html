@@ -14,7 +14,7 @@
     <div class="container">
         <h1 class="Title">SLauncher</h1>
         <h4>- Games -</h4>
-        <div class="badge text-bg-primary">
+        <div class="badge text-bg-primary" id="fm">
             <h2>Fantasztikus Márkó</h2>
             <p>Egy egyszerű platformer játék</p>
             <h6>V1.2.1</h6>
@@ -23,12 +23,26 @@
             </div>
             <div><button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
+        <div class="badge text-bg-danger" id="sfe">
+            <h2>Spidey - Flies eater</h2>
+            <p>Kapd el az összes legyet rövid időn belül!</p>
+            <h6>V1.0</h6>
+            <div>
+                <button onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'" class="btn btn-success">Download</button>
+            </div>
+             <div><button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
+        </div>
     </div>
 
 <script>
   document.getElementById('openGameBtn').addEventListener('click', () => {
     window.electronAPI.openGame();
   });
+
+    document.getElementById('openGame2Btn').addEventListener('click', () => {
+    window.electronAPI.openGame();
+  });
+
 
   setInterval(() => {
   window.location.reload();
