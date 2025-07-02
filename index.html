@@ -2,11 +2,11 @@
 <html lang="hu">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/styles.css">
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>SLauncher</title>
 </head>
 
@@ -14,6 +14,7 @@
     <div class="container">
         <h1 class="Title">SLauncher</h1>
         <h4>- Games -</h4>
+
         <div class="badge text-bg-primary" id="fm">
             <h2>Fantasztikus Márkó</h2>
             <p>Just a simple platformer game</p>
@@ -24,8 +25,11 @@
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'"
                     class="btn btn-success" id="downloadFmBtn">Download</button>
             </div>
-            <div><button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
+            <div>
+                <button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
+            </div>
         </div>
+
         <div class="badge text-bg-light" id="sfe">
             <h2>Spidey - Flies eater</h2>
             <p>Catch all the flies in a short time!!</p>
@@ -36,7 +40,9 @@
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
                     class="btn btn-success" id="downloadSfeBtn">Download</button>
             </div>
-            <div><button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
+            <div>
+                <button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
+            </div>
         </div>
 
         <div class="badge text-bg-danger" id="jumpTogether">
@@ -49,7 +55,8 @@
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/jt/Jump%20Together-1_0_0-windows.exe'"
                     class="btn btn-success" id="downloadJumpBtn">Download</button>
             </div>
-            <div><button id="openGame3Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
+            <div>
+                <button id="openGame3Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
             </div>
         </div>
 
@@ -58,58 +65,72 @@
             <ul>
                 <li>
                     <h5>Launcher V3.1.1 relased - 2025.07.02 13:30</h5>
-                    <p>Bugs fixed <br>
+                    <p>Bugs fixed <br />
                         Automatic updater system added!</p>
                 </li>
                 <li>
                     <h5>Jump Together V1.0 Relased! - 2025.07.02</h5>
-                    <p>Your task is to collect all the apples. <br>
-                        You can play in multiplayer! Btw there is no singleplayer :( <br>
+                    <p>Your task is to collect all the apples. <br />
+                        You can play in multiplayer! Btw there is no singleplayer :( <br />
                         HAVE FUN!</p>
                 </li>
             </ul>
         </div>
-
     </div>
 
-
     <footer>
-        <hr>
+        <hr />
         <p>&copy; 2025 SLauncher. All rights reserved.</p>
     </footer>
+
     <script>
+        // Gomb események, hogy meghívják az electron API-t
         document.getElementById('openGameBtn').addEventListener('click', () => {
             window.electronAPI.openGame();
         });
-
         document.getElementById('openGame2Btn').addEventListener('click', () => {
             window.electronAPI.openGame2();
         });
-
-        // Ha kell a Jump Together gombja:
         document.getElementById('openGame3Btn').addEventListener('click', () => {
-            console.log('Jump Together open clicked');
             window.electronAPI.openGame3();
-            // Itt tudsz hozzáadni IPC hívást, ha backend is kész
         });
 
-        function updateButtons(isInstalled) {
+        // Gombok frissítése telepítettség alapján
+        function updateButtons(downloadBtnId, openBtnId, isInstalled) {
+            const downloadBtn = document.getElementById(downloadBtnId);
+            const openBtn = document.getElementById(openBtnId);
             if (isInstalled) {
-                document.getElementById('downloadFmBtn').style.display = 'none';
-                document.getElementById('openGameBtn').style.display = 'inline-block';
+                downloadBtn.style.display = 'none';
+                openBtn.style.display = 'inline-block';
             } else {
-                document.getElementById('downloadFmBtn').style.display = 'inline-block';
-                document.getElementById('openGameBtn').style.display = 'none';
+                downloadBtn.style.display = 'inline-block';
+                openBtn.style.display = 'none';
             }
         }
 
-        // Első játék telepítettsége
-        window.electronAPI.checkGameInstalled().then(updateButtons);
-
-        window.electronAPI.onDownloadCompleted(() => {
-            window.electronAPI.checkGameInstalled().then(updateButtons);
+        // Mindhárom játék telepítettségének lekérése és frissítés
+        window.electronAPI.checkFmInstalled().then(installed => {
+            updateButtons('downloadFmBtn', 'openGameBtn', installed);
+        });
+        window.electronAPI.checkSfeInstalled().then(installed => {
+            updateButtons('downloadSfeBtn', 'openGame2Btn', installed);
+        });
+        window.electronAPI.checkJtInstalled().then(installed => {
+            updateButtons('downloadJumpBtn', 'openGame3Btn', installed);
         });
 
+        // Letöltés befejezése után is frissítjük a gombokat
+        window.electronAPI.onDownloadCompleted(() => {
+            window.electronAPI.checkFmInstalled().then(installed => {
+                updateButtons('downloadFmBtn', 'openGameBtn', installed);
+            });
+            window.electronAPI.checkSfeInstalled().then(installed => {
+                updateButtons('downloadSfeBtn', 'openGame2Btn', installed);
+            });
+            window.electronAPI.checkJtInstalled().then(installed => {
+                updateButtons('downloadJumpBtn', 'openGame3Btn', installed);
+            });
+        });
     </script>
 </body>
 
