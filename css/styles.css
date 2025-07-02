@@ -1,37 +1,52 @@
-html, body{
-    color:rgb(209, 206, 201);
+html,
+body {
+    color: rgb(209, 206, 201);
     background-color: rgb(52, 51, 56);
 }
 
-.Title{
+.Title {
     text-align: left;
 }
 
 
-#fm{
+#fm {
     margin-right: 30px;
     padding-bottom: 20px;
 }
 
-#sfe{
- 
+#sfe {
+
     margin-right: 30px;
     padding-bottom: 20px;
 }
 
-#news{
+#news {
     margin-top: 40px;
 }
 
-.small{
+.small {
     margin-bottom: 15px;
 }
 
-.badge{
+.badge {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.none{
+.none {
     display: none;
+}
+
+hr {
+    color: whitesmoke;
+
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(52, 51, 56, 0.8);
 }

@@ -49,17 +49,25 @@
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
                     class="btn btn-success none">Download</button>
             </div>
-            <div><button id="openGame2" class="btn btn-warning none" style="margin-top: 10px;">Open Game</button>
-            <p class="btn btn-warning">Not ready yet</p></div>
+            <div><button id="openGame2" class="btn btn-warning none" style="margin-top: 10px;">Open Game</button></div>
         </div>
 
         <div id="news">
-            <h4>- News -</h4>
-            <p>There is currently no new news.</p>
+            <h3>- News -</h3>
+            <ul class="none">
+            <li>
+                <h5>Jump Together V1.0 Relased! - 2025.07.02</h5>
+                <p>Your task is to collect all the apples. <br>
+                You can play in multiplayer! Btw there is no singleplayer :( <br>
+                HAVE FUN!</p>    
+            </li>
+            </ul>
         </div>
 
     </div>
 
+
+    <footer><hr> <p>&copy; 2025 SLauncher. All rights reserved.</p></footer>
     <script>
         document.getElementById('openGameBtn').addEventListener('click', () => {
             window.electronAPI.openGame();
