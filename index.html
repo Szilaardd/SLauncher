@@ -46,10 +46,11 @@
             <h6>V1.0</h6>
             <div>
                 <button
-                    onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
-                    class="btn btn-success none" id="downloadJumpBtn">Download</button>
+                    onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/jt/Jump%20Together-1_0_0-windows.exe'"
+                    class="btn btn-success" id="downloadJumpBtn">Download</button>
             </div>
-            <div><button id="openGame3Btn" class="btn btn-warning none" style="margin-top: 10px;">Open Game</button></div>
+            <div><button id="openGame3Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
+            </div>
         </div>
 
         <div id="news">
@@ -83,6 +84,7 @@
         // Ha kell a Jump Together gombja:
         document.getElementById('openGame3Btn').addEventListener('click', () => {
             console.log('Jump Together open clicked');
+            window.electronAPI.openGame3();
             // Itt tudsz hozzáadni IPC hívást, ha backend is kész
         });
 
@@ -102,6 +104,7 @@
         window.electronAPI.onDownloadCompleted(() => {
             window.electronAPI.checkGameInstalled().then(updateButtons);
         });
+
     </script>
 </body>
 
