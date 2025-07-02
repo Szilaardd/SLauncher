@@ -22,7 +22,7 @@
             <div>
                 <button
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'"
-                    class="btn btn-success" id="windows">Download</button>
+                    class="btn btn-success" id="downloadFmBtn">Download</button>
             </div>
             <div><button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
@@ -34,12 +34,12 @@
             <div>
                 <button
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
-                    class="btn btn-success">Download</button>
+                    class="btn btn-success" id="downloadSfeBtn">Download</button>
             </div>
-            <div><button id="openGame2" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
+            <div><button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
 
-        <div class="badge text-bg-danger" id="sfe">
+        <div class="badge text-bg-danger" id="jumpTogether">
             <h2>Jump Together</h2>
             <p>Jump and collect all of apple!</p>
             <small class="small">Engine: Gdevelop</small>
@@ -47,9 +47,9 @@
             <div>
                 <button
                     onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
-                    class="btn btn-success none">Download</button>
+                    class="btn btn-success none" id="downloadJumpBtn">Download</button>
             </div>
-            <div><button id="openGame2" class="btn btn-warning none" style="margin-top: 10px;">Open Game</button></div>
+            <div><button id="openGame3Btn" class="btn btn-warning none" style="margin-top: 10px;">Open Game</button></div>
         </div>
 
         <div id="news">
@@ -76,28 +76,32 @@
             window.electronAPI.openGame();
         });
 
-        document.getElementById('openGame2').addEventListener('click', () => {
+        document.getElementById('openGame2Btn').addEventListener('click', () => {
             window.electronAPI.openGame2();
         });
 
-
-        setInterval(() => {
-            window.location.reload();
-        }, 30000);
-
-        const openBtn = document.getElementById('open-game');
-        const downloadBtn = document.getElementById('download-game');
-
-        electronAPI.checkGameInstalled().then(isInstalled => {
-            if (isInstalled) {
-                openBtn.style.display = 'block';
-                downloadBtn.style.display = 'none';
-            } else {
-                openBtn.style.display = 'none';
-                downloadBtn.style.display = 'block';
-            }
+        // Ha kell a Jump Together gombja:
+        document.getElementById('openGame3Btn').addEventListener('click', () => {
+            console.log('Jump Together open clicked');
+            // Itt tudsz hozzáadni IPC hívást, ha backend is kész
         });
 
+        function updateButtons(isInstalled) {
+            if (isInstalled) {
+                document.getElementById('downloadFmBtn').style.display = 'none';
+                document.getElementById('openGameBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('downloadFmBtn').style.display = 'inline-block';
+                document.getElementById('openGameBtn').style.display = 'none';
+            }
+        }
+
+        // Első játék telepítettsége
+        window.electronAPI.checkGameInstalled().then(updateButtons);
+
+        window.electronAPI.onDownloadCompleted(() => {
+            window.electronAPI.checkGameInstalled().then(updateButtons);
+        });
     </script>
 </body>
 
