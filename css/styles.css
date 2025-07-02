@@ -26,3 +26,12 @@ html, body{
 .small{
     margin-bottom: 15px;
 }
+
+.badge{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.none{
+    display: none;
+}
