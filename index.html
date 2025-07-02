@@ -39,7 +39,7 @@
             <div><button id="openGame2" class="btn btn-warning" style="margin-top: 10px;">Open Game</button></div>
         </div>
 
-<div class="badge text-bg-danger" id="sfe">
+        <div class="badge text-bg-danger" id="sfe">
             <h2>Jump Together</h2>
             <p>Jump and collect all of apple!</p>
             <small class="small">Engine: Gdevelop</small>
@@ -55,19 +55,22 @@
         <div id="news">
             <h3>- News -</h3>
             <ul class="none">
-            <li>
-                <h5>Jump Together V1.0 Relased! - 2025.07.02</h5>
-                <p>Your task is to collect all the apples. <br>
-                You can play in multiplayer! Btw there is no singleplayer :( <br>
-                HAVE FUN!</p>    
-            </li>
+                <li>
+                    <h5>Jump Together V1.0 Relased! - 2025.07.02</h5>
+                    <p>Your task is to collect all the apples. <br>
+                        You can play in multiplayer! Btw there is no singleplayer :( <br>
+                        HAVE FUN!</p>
+                </li>
             </ul>
         </div>
 
     </div>
 
 
-    <footer><hr> <p>&copy; 2025 SLauncher. All rights reserved.</p></footer>
+    <footer>
+        <hr>
+        <p>&copy; 2025 SLauncher. All rights reserved.</p>
+    </footer>
     <script>
         document.getElementById('openGameBtn').addEventListener('click', () => {
             window.electronAPI.openGame();
@@ -81,6 +84,20 @@
         setInterval(() => {
             window.location.reload();
         }, 30000);
+
+        const openBtn = document.getElementById('open-game');
+        const downloadBtn = document.getElementById('download-game');
+
+        electronAPI.checkGameInstalled().then(isInstalled => {
+            if (isInstalled) {
+                openBtn.style.display = 'block';
+                downloadBtn.style.display = 'none';
+            } else {
+                openBtn.style.display = 'none';
+                downloadBtn.style.display = 'block';
+            }
+        });
+
     </script>
 </body>
 
