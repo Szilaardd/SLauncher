@@ -32,6 +32,26 @@
             font-weight: bold;
             font-size: small;
         }
+
+        hr {
+            color: whitesmoke;
+
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(52, 51, 56, 0.9);
+        }
+
+        .box {
+            background-color: rgba(79, 78, 80, 0.4);
+            padding: 10px;
+            border-radius: 20px;
+        }
     </style>
     <title>SLauncher -- Downlaod</title>
 </head>
@@ -48,8 +68,46 @@
                 onclick="document.location='https://github.com/Szilaardd/SLauncher-app/raw/refs/heads/main/installer/launcher%20Setup%203.0.0.exe'"
                 class="btn btn-success" id="yey">Download</button>
         </div>
-    </div>
+        <div style="margin-top: 40px;" class="box">
+            <div class="row">
 
+                <h3>- Discord -</h3>
+                <div class="col">
+                    <iframe src="https://discord.com/widget?id=1389938445975031921&theme=dark" width="350" height="500"
+                        allowtransparency="true" frameborder="0"
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+                <div class="col">
+                    <h1>Why join this discord server?</h1>
+                    <button onclick="document.location='https://discord.gg/yFqjS2Hufe'" class="btn btn-info"
+                        id="downloadJumpBtn" style="margin-top: 20px;">Join Discord</button>
+
+                </div>
+                <div class="col">
+                    <ul>
+                        <li>
+                            <p><strong>💬 Found a bug or have feedback?</strong><br>
+                                Join my Discord and let us know! Your ideas matter!</p>
+                        </li>
+
+                        <li>
+                            <p><strong>🎮 Love SLauncher?</strong><br>
+                                Come hang out, get updates, and help shape the future!</p>
+                        </li>
+
+                        <li>
+                            <p><strong>🚀 Be part of the community!</strong><br>
+                                Play multiplayer games, chat with devs, and make suggestions.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+ <footer>
+            <hr>
+            <p>&copy; 2025 SLauncher. All rights reserved.</p>
+        </footer>
 </body>
 
 </html>
