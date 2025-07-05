@@ -174,14 +174,13 @@
 
 
         // discord
-        const { ipcRenderer } = require('electron');
-
         document.getElementById('discord').addEventListener('click', () => {
-            ipcRenderer.send('open-discord-link');
-})
-            document.getElementById('web').addEventListener('click', () => {
-                ipcRenderer.send('open-web-link');
-            });
+  window.electronAPI.openDiscordLink();
+});
+
+document.getElementById('web').addEventListener('click', () => {
+  window.electronAPI.openWebLink();
+});
 
 
 
