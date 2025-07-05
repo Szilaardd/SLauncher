@@ -56,3 +56,37 @@ footer {
      padding: 10px;
      border-radius: 20px;
 }
+
+
+ /* Átlátszó háttér, whitesmoke szöveg, eltávolítva a border és hover háttér */
+  .list-group-item {
+    background-color: transparent !important;
+    color: whitesmoke !important;
+    border: none !important;
+  }
+  .list-group-item:hover,
+  .list-group-item:focus,
+  .list-group-item.active {
+    background-color: transparent !important;
+    color: whitesmoke !important;
+    box-shadow: none !important;
+  }
+
+  /* A scrollspy tartalom háttere, hogy jól olvasható legyen */
+  .scrollspy-example {
+    position: relative;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: #222; /* sötét háttér */
+    padding: 1rem;
+    border-radius: 0.3rem;
+    color: whitesmoke;
+  }
+
+  .marginb{
+    margin-bottom: 5;
+  }
+
+  .btn-warning{
+    color: #222 !important;
+  }

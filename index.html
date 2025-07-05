@@ -7,128 +7,112 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <title>SLauncher</title>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="Title">SLauncher</h1>
+        <h1 class="Title">Maintenance break</h1>
+       
+       
         <div class="box">
-            <h4>- Games -</h4>
-
-            <div class="badge text-bg-primary" id="fm">
-                <h2>Fantasztikus Márkó</h2>
-                <p>Just a simple platformer game</p>
-                <small class="small">Engine: Gdevelop</small>
-                <h6>V1.2.1</h6>
-                <div>
-                    <button
-                        onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/400a61dfbfd14dead3f3ad81228f28d142f018ac/games/fm/V1.2.1/Windows-Installer.exe'"
-                        class="btn btn-success" id="downloadFmBtn">Download</button>
-                </div>
-                <div>
-                    <button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
-                </div>
-            </div>
-
-            <div class="badge text-bg-light" id="sfe">
-                <h2>Spidey - Flies eater</h2>
-                <p>Catch all the flies in a short time!!</p>
-                <small class="small">Engine: Gdevelop</small>
-                <h6>V1.0</h6>
-                <div>
-                    <button
-                        onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/sfe/V1.0/Installer.exe'"
-                        class="btn btn-success" id="downloadSfeBtn">Download</button>
-                </div>
-                <div>
-                    <button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
-                </div>
-            </div>
-
-            <div class="badge text-bg-danger" id="jumpTogether">
-                <h2>Jump Together</h2>
-                <p>Jump and collect all of apple!</p>
-                <small class="small">Engine: Gdevelop</small>
-                <h6>V1.0</h6>
-                <div>
-                    <button
-                        onclick="document.location='https://github.com/Szilaardd/SLauncher/raw/refs/heads/main/games/jt/Jump%20Together-1_0_0-windows.exe'"
-                        class="btn btn-success" id="downloadJumpBtn">Download</button>
-                </div>
-                <div>
-                    <button id="openGame3Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
-                </div>
-            </div>
-        </div>
-        <div id="news" class="box">
-            <h3>- News -</h3>
-            <ul>
-                   <li>
-                    <h5>Launcher v3.1.3 <strong>BUG</strong></h5>
-                    <p>"Join Discord" button currently not available! <br>
-                    go to download website and try there!</p>
-                </li>
-                
-                <li>
-                    <h5>Launcher V3.1.3 <strong>relased!</strong> - 2025.07.02 14:15</h5>
-                    <p>Discord Rich Presence Support</p>
-                </li>
-
-                <li>
-                    <h5>Launcher V3.1.2 relased - 2025.07.02 14:00</h5>
-                    <p>Bugs fixed</p>
-                </li>
-
-                <li>
-                    <h5>Launcher V3.1.1 relased - 2025.07.02 13:30</h5>
-                    <p>Bugs fixed <br />
-                        Automatic updater system added!</p>
-                </li>
-                <li>
-                    <h5>Jump Together V1.0 Relased! - 2025.07.02</h5>
-                    <p>Your task is to collect all the apples. <br />
-                        You can play in multiplayer! Btw there is no singleplayer :( <br />
-                        HAVE FUN!</p>
-                </li>
-            </ul>
-        </div>
-
-        <div style="margin-top: 40px;" class="box">
             <div class="row">
-
-                <h3>- Discord -</h3>
-                <div class="col">
-                    <iframe src="https://discord.com/widget?id=1389938445975031921&theme=dark" width="350" height="500"
-                        allowtransparency="true" frameborder="0"
-                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                <div class="col-auto text-start me-5">
+                    <h5>Game</h5>
                 </div>
-                <div class="col">
-                    <h1>Why join this discord server?</h1>
-                    <button class="btn btn-secondary" style="margin-top: 20px;">Join Discord</button>
-                    <small>currently not available, check on  <a href="https://szilaardd.github.io/SLauncher/download.html" target="_blank">download page!</a></small>
-  
+                <div class="col-auto text-end me-3">
+                    <h5>Community</h5>
                 </div>
-                <div class="col">
-                    <ul>
-                        <li>
-                            <p><strong>💬 Found a bug or have feedback?</strong><br>
-                                Join my Discord and let us know! Your ideas matter!</p>
-                        </li>
-
-                        <li>
-                            <p><strong>🎮 Love SLauncher?</strong><br>
-                                Come hang out, get updates, and help shape the future!</p>
-                        </li>
-
-                        <li>
-                            <p><strong>🚀 Be part of the community!</strong><br>
-                                Play multiplayer games, chat with devs, and make suggestions.</p>
-                        </li>
-                    </ul>
+                <div class="col-auto text-end">
+                    <h5>Website</h5>
                 </div>
             </div>
+            <div class="mb-3">
+                <button class="btn btn-warning p-1 me-4"><strong>Library >></strong></button>
+                <button id="discord" class="btn btn-primary p-1 me-5"><strong>Discord >></strong></button>
+                <button id="discord" class="btn btn-info p-1 me-3"><strong>Website >></strong></button>
+            </div>
+            <div class="col" style="float: right;">
+                <iframe src="https://discord.com/widget?id=1389938445975031921&theme=dark" width="350" height="500"
+                    allowtransparency="true" frameborder="0"
+                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>
+            <div id="news" class="box">
+                <h3>- News -</h3>
+                <div class="container my-4">
+                    <div class="row">
+                        <!-- Lista oldalsáv -->
+                        <div class="col-4">
+                            <div id="list-example" class="list-group">
+
+                                <!-- Game -->
+                                <button class="btn btn-danger mb-2"><a class="list-group-item list-group-item-action"
+                                        href="#gV1">Game relased</a></button>
+
+                                <!-- V4.X verziók (üres link) -->
+                                <button class="btn btn-success mb-2"> <a class="list-group-item list-group-item-action"
+                                        href="#lV4.xx">Launcher V4.xx</a></button>
+
+
+                                <!-- V3.X verziók -->
+                                <button class="btn btn-warning mb-2"><a class="list-group-item list-group-item-action"
+                                        href="#lV3.xx">Launcher V3.xx</a></button>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Tartalom oldal -->
+                        <div class="col-8">
+                            <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true"
+                                class="scrollspy-example" tabindex="0">
+
+                                <div id="lV4.xx">
+                                    <h4 id="v4"><strong>Launcher v4.0</strong></h4>
+                                    <p> <big>New design changes,</big> <br><small>new news design, new menus, "Discord
+                                            section" deleted, there is a new Discord button to discord server</small>
+                                        <br> <big>discord button bug fixed and replaced,</big><br>
+                                        <big>some updates inside the app</big><br>
+                                    </p>
+                                </div>
+
+                                <div id="gV1">
+                                    <h4><strong>Jump Together V1.0 Relased! - 2025.07.02</strong></h4>
+                                    <p>
+                                        Your task is to collect all the apples.<br />
+                                        You can play in multiplayer! Btw there is no singleplayer :(<br />
+                                        HAVE FUN!
+                                    </p>
+                                </div>
+                                <div id="lV3.xx">
+                                    <h4 id="v3-1"><strong><mark>BUG</mark> Launcher v3.1.3 </strong></h4>
+                                    <p>"Join Discord" button currently not available!<br />go to download website and
+                                        try
+                                        there!</p>
+
+                                    <h4 id="v3-2">Launcher V3.1.3 <strong>relased!</strong> - 2025.07.02 14:15</h4>
+                                    <p>Discord Rich Presence Support</p>
+
+                                    <h4 id="v3-3">Launcher V3.1.2 relased - 2025.07.02 14:00</h4>
+                                    <p>Bugs fixed</p>
+
+                                    <h4 id="v3-4">Launcher V3.1.1 relased - 2025.07.02 13:30</h4>
+                                    <p>Bugs fixed <br />Automatic updater system added!</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
+
+    </div>
+    </div>
 
     </div>
 
@@ -189,16 +173,24 @@
         });
 
 
+        // discord
+        const { ipcRenderer } = require('electron');
+
+        document.getElementById('discord').addEventListener('click', () => {
+            ipcRenderer.send('open-discord-link');
+})
+            document.getElementById('web').addEventListener('click', () => {
+                ipcRenderer.send('open-web-link');
+            });
 
 
 
 
 
-
-        /* ....................................... UTOLSÓ ELEM ...................................... */
-        setInterval(() => {
-            window.location.reload();
-        }, 10000); // 10000 ms = 10 másodperc
+            /* ....................................... UTOLSÓ ELEM ...................................... */
+            setInterval(() => {
+                window.location.reload();
+            }, 10000); // 10000 ms = 10 másodperc
 
 
     </script>
