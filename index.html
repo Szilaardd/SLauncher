@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button id="library" class="btn btn-warning p-1 me-4"><strong>Library >></strong></button>
+                <button onclick="window.location.href='https://szilaardd.github.io/SLauncher/games.html'" id="library" class="btn btn-warning p-1 me-4"><strong>Library >></strong></button>
                 <button id="discord" class="btn btn-primary p-1 me-5"><strong>Discord >></strong></button>
                 <button id="web" class="btn btn-info p-1 me-3"><strong>Website >></strong></button>
             </div>
@@ -177,7 +177,7 @@
 
 
         // discord
-        document.getElementById('discord').addEventListener('click', () => {
+  document.getElementById('discord').addEventListener('click', () => {
   window.electronAPI.openDiscordLink();
 });
 
@@ -186,10 +186,19 @@ document.getElementById('web').addEventListener('click', () => {
 });
 
 
- document.getElementById("library").addEventListener("click", function () {
-    window.location.href = "games.html"; // vagy egy külső URL pl.: "https://google.com"
-  });
+document.getElementById('openGame4Btn').addEventListener('click', () => {
+  window.electronAPI.openGame4();
+});
 
+window.electronAPI.checkSsInstalled().then(installed => {
+  updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+});
+
+window.electronAPI.onDownloadCompleted(() => {
+  window.electronAPI.checkSsInstalled().then(installed => {
+    updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+  });
+});
 
             /* ....................................... UTOLSÓ ELEM ...................................... */
             setInterval(() => {
