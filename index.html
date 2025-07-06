@@ -13,8 +13,8 @@
 
 <body>
     <div class="container">
-        <h1 class="Title none"></h1>
-        <div class="m-5"></div>
+        <h1 class="Title">MAINTANCE</h1>
+        <div class="m-5">Some features not working!</div>
        
        
         <div class="box">
@@ -199,6 +199,27 @@ window.electronAPI.onDownloadCompleted(() => {
     updateButtons('downloadSsBtn', 'openGame4Btn', installed);
   });
 });
+
+const { ipcRenderer } = require('electron');
+
+const downloadBtn = document.getElementById('downloadBtn'); // feltételezem, hogy van ilyen id-jű gombod
+
+downloadBtn.addEventListener('click', async () => {
+  downloadBtn.disabled = true;
+  downloadBtn.innerText = 'Downloading and installing...';
+
+  const result = await ipcRenderer.invoke('download-and-install-ss');
+
+  if (result.success) {
+    alert('Letöltés és telepítés sikeres!');
+  } else {
+    alert('Hiba történt: ' + result.error);
+  }
+
+  downloadBtn.disabled = false;
+  downloadBtn.innerText = 'Download';
+});
+
 
             /* ....................................... UTOLSÓ ELEM ...................................... */
             setInterval(() => {
