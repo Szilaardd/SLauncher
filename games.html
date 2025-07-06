@@ -103,31 +103,37 @@
 
 
     <script>
-        // Gomb események, hogy meghívják az electron API-t
-        document.getElementById('openGameBtn').addEventListener('click', () => {
+    // Gombok frissítése telepítettség alapján
+    function updateButtons(downloadBtnId, openBtnId, isInstalled) {
+        const downloadBtn = document.getElementById(downloadBtnId);
+        const openBtn = document.getElementById(openBtnId);
+        if (!downloadBtn || !openBtn) return;
+        if (isInstalled) {
+            downloadBtn.style.display = 'none';
+            openBtn.style.display = 'inline-block';
+        } else {
+            downloadBtn.style.display = 'inline-block';
+            openBtn.style.display = 'none';
+        }
+    }
+
+    // Ellenőrizzük, hogy Electron környezetben vagyunk-e
+    if (window.electronAPI) {
+        // Játék indító gombok
+        document.getElementById('openGameBtn')?.addEventListener('click', () => {
             window.electronAPI.openGame();
         });
-        document.getElementById('openGame2Btn').addEventListener('click', () => {
+        document.getElementById('openGame2Btn')?.addEventListener('click', () => {
             window.electronAPI.openGame2();
         });
-        document.getElementById('openGame3Btn').addEventListener('click', () => {
+        document.getElementById('openGame3Btn')?.addEventListener('click', () => {
             window.electronAPI.openGame3();
         });
+        document.getElementById('openGame4Btn')?.addEventListener('click', () => {
+            window.electronAPI.openGame4();
+        });
 
-        // Gombok frissítése telepítettség alapján
-        function updateButtons(downloadBtnId, openBtnId, isInstalled) {
-            const downloadBtn = document.getElementById(downloadBtnId);
-            const openBtn = document.getElementById(openBtnId);
-            if (isInstalled) {
-                downloadBtn.style.display = 'none';
-                openBtn.style.display = 'inline-block';
-            } else {
-                downloadBtn.style.display = 'inline-block';
-                openBtn.style.display = 'none';
-            }
-        }
-
-        // Mindhárom játék telepítettségének lekérése és frissítés
+        // Telepítettség ellenőrzés és gombfrissítés
         window.electronAPI.checkFmInstalled().then(installed => {
             updateButtons('downloadFmBtn', 'openGameBtn', installed);
         });
@@ -137,8 +143,11 @@
         window.electronAPI.checkJtInstalled().then(installed => {
             updateButtons('downloadJumpBtn', 'openGame3Btn', installed);
         });
+        window.electronAPI.checkSsInstalled().then(installed => {
+            updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+        });
 
-        // Letöltés befejezése után is frissítjük a gombokat
+        // Letöltés befejezése után frissítés
         window.electronAPI.onDownloadCompleted(() => {
             window.electronAPI.checkFmInstalled().then(installed => {
                 updateButtons('downloadFmBtn', 'openGameBtn', installed);
@@ -149,61 +158,46 @@
             window.electronAPI.checkJtInstalled().then(installed => {
                 updateButtons('downloadJumpBtn', 'openGame3Btn', installed);
             });
-        });
-
-
-        // discord
-        document.getElementById('discord').addEventListener('click', () => {
-            window.electronAPI.openDiscordLink();
-        });
-
-        document.getElementById('web').addEventListener('click', () => {
-            window.electronAPI.openWebLink();
-        });
-
-
-        document.getElementById('openGame4Btn').addEventListener('click', () => {
-            window.electronAPI.openGame4();
-        });
-
-        window.electronAPI.checkSsInstalled().then(installed => {
-            updateButtons('downloadSsBtn', 'openGame4Btn', installed);
-        });
-
-        window.electronAPI.onDownloadCompleted(() => {
             window.electronAPI.checkSsInstalled().then(installed => {
                 updateButtons('downloadSsBtn', 'openGame4Btn', installed);
             });
         });
 
-        const { ipcRenderer } = require('electron');
-
-        const downloadBtn = document.getElementById('downloadBtn'); // feltételezem, hogy van ilyen id-jű gombod
-
-        downloadBtn.addEventListener('click', async () => {
-            downloadBtn.disabled = true;
-            downloadBtn.innerText = 'Downloading and installing...';
-
-            const result = await ipcRenderer.invoke('download-and-install-ss');
-
-            if (result.success) {
-                alert('Letöltés és telepítés sikeres!');
-            } else {
-                alert('Hiba történt: ' + result.error);
-            }
-
-            downloadBtn.disabled = false;
-            downloadBtn.innerText = 'Download';
+        // Discord és web linkek
+        document.getElementById('discord')?.addEventListener('click', () => {
+            window.electronAPI.openDiscordLink();
+        });
+        document.getElementById('web')?.addEventListener('click', () => {
+            window.electronAPI.openWebLink();
         });
 
+        // SS letöltő gomb (csak Electronban)
+        const downloadBtn = document.getElementById('downloadSsBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', async () => {
+                downloadBtn.disabled = true;
+                downloadBtn.innerText = 'Downloading and installing...';
 
-        /* ....................................... UTOLSÓ ELEM ...................................... */
-        setInterval(() => {
-            window.location.reload();
-        }, 10000); // 10000 ms = 10 másodperc
+                const result = await window.electronAPI.downloadAndInstallSS?.();
 
+                if (result?.success) {
+                    alert('Letöltés és telepítés sikeres!');
+                } else {
+                    alert('Hiba történt: ' + (result?.error || 'Ismeretlen hiba'));
+                }
 
-    </script>
+                downloadBtn.disabled = false;
+                downloadBtn.innerText = 'Download';
+            });
+        }
+    }
+
+    // Automatikus frissítés minden 10 másodpercben
+    setInterval(() => {
+        window.location.reload();
+    }, 10000);
+</script>
+
 </body>
 
 </html>

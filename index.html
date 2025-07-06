@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="./css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>SLauncher</title>
 </head>
 
 <body>
     <div class="container">
-        
-        <div class="m-5"><h1 class="Title none">MAINTANCE</h1></div>
-       
-       
+
+        <div class="m-5">
+            <h1 class="Title none">MAINTANCE</h1>
+        </div>
+
+
         <div class="box">
             <div class="row">
                 <div class="col-auto text-start me-5">
@@ -30,7 +34,8 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button onclick="window.location.href='https://szilaardd.github.io/SLauncher/games.html'" id="library" class="btn btn-warning p-1 me-4"><strong>Library >></strong></button>
+                <button onclick="window.location.href='https://szilaardd.github.io/SLauncher/games.html'" id="library"
+                    class="btn btn-warning p-1 me-4"><strong>Library >></strong></button>
                 <button id="discord" class="btn btn-primary p-1 me-5"><strong>Discord >></strong></button>
                 <button id="web" class="btn btn-info p-1 me-3"><strong>Website >></strong></button>
             </div>
@@ -70,17 +75,18 @@
                                 class="scrollspy-example" tabindex="0">
 
                                 <div id="lV4.xx">
-                                     <h4 id="v4"><strong>Launcher v4.0.1</strong></h4>
+                                    <h4 id="v4"><strong>Launcher v4.0.1</strong></h4>
                                     <p> Critical error fixed!
                                     </p>
-                                    
-                                    
+
+
                                     <h4 id="v4"><strong>Launcher v4.0</strong></h4>
                                     <p> <big>New design changes,</big> <br><small>new news design, new menus, "Discord
                                             section" deleted, there is a new Discord button to discord server</small>
                                         <br> <big>discord button bug fixed and replaced,</big><br>
                                         <big>some updates inside the app</big><br>
-                                        <small>7zip integration added for the new comming game <br>and some optimize changes in application</small>
+                                        <small>7zip integration added for the new comming game <br>and some optimize
+                                            changes in application</small>
                                     </p>
                                 </div>
 
@@ -130,9 +136,9 @@
         <p>&copy; 2025 SLauncher. All rights reserved.</p>
     </footer>
 
-   
-   
-   <script>
+
+
+    <script>
         // Gomb események, hogy meghívják az electron API-t
         document.getElementById('openGameBtn').addEventListener('click', () => {
             window.electronAPI.openGame();
@@ -183,54 +189,54 @@
 
 
         // discord
-  document.getElementById('discord').addEventListener('click', () => {
-  window.electronAPI.openDiscordLink();
-});
+        document.getElementById('discord').addEventListener('click', () => {
+            window.electronAPI.openDiscordLink();
+        });
 
-document.getElementById('web').addEventListener('click', () => {
-  window.electronAPI.openWebLink();
-});
-
-
-document.getElementById('openGame4Btn').addEventListener('click', () => {
-  window.electronAPI.openGame4();
-});
-
-window.electronAPI.checkSsInstalled().then(installed => {
-  updateButtons('downloadSsBtn', 'openGame4Btn', installed);
-});
-
-window.electronAPI.onDownloadCompleted(() => {
-  window.electronAPI.checkSsInstalled().then(installed => {
-    updateButtons('downloadSsBtn', 'openGame4Btn', installed);
-  });
-});
-
-const { ipcRenderer } = require('electron');
-
-const downloadBtn = document.getElementById('downloadBtn'); // feltételezem, hogy van ilyen id-jű gombod
-
-downloadBtn.addEventListener('click', async () => {
-  downloadBtn.disabled = true;
-  downloadBtn.innerText = 'Downloading and installing...';
-
-  const result = await ipcRenderer.invoke('download-and-install-ss');
-
-  if (result.success) {
-    alert('Letöltés és telepítés sikeres!');
-  } else {
-    alert('Hiba történt: ' + result.error);
-  }
-
-  downloadBtn.disabled = false;
-  downloadBtn.innerText = 'Download';
-});
+        document.getElementById('web').addEventListener('click', () => {
+            window.electronAPI.openWebLink();
+        });
 
 
-            /* ....................................... UTOLSÓ ELEM ...................................... */
-            setInterval(() => {
-                window.location.reload();
-            }, 10000); // 10000 ms = 10 másodperc
+        document.getElementById('openGame4Btn').addEventListener('click', () => {
+            window.electronAPI.openGame4();
+        });
+
+        window.electronAPI.checkSsInstalled().then(installed => {
+            updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+        });
+
+        window.electronAPI.onDownloadCompleted(() => {
+            window.electronAPI.checkSsInstalled().then(installed => {
+                updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+            });
+        });
+
+        const { ipcRenderer } = require('electron');
+
+        const downloadBtn = document.getElementById('downloadBtn'); // feltételezem, hogy van ilyen id-jű gombod
+
+        downloadBtn.addEventListener('click', async () => {
+            downloadBtn.disabled = true;
+            downloadBtn.innerText = 'Downloading and installing...';
+
+            const result = await ipcRenderer.invoke('download-and-install-ss');
+
+            if (result.success) {
+                alert('Letöltés és telepítés sikeres!');
+            } else {
+                alert('Hiba történt: ' + result.error);
+            }
+
+            downloadBtn.disabled = false;
+            downloadBtn.innerText = 'Download';
+        });
+
+
+        /* ....................................... UTOLSÓ ELEM ...................................... */
+        setInterval(() => {
+            window.location.reload();
+        }, 10000); // 10000 ms = 10 másodperc
 
 
     </script>
