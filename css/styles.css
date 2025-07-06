@@ -1,92 +1,105 @@
 html,
 body {
-    color: rgb(209, 206, 201);
-    background-color: rgb(52, 51, 56);
+  color: rgb(209, 206, 201);
+  background-color: rgb(52, 51, 56);
 }
 
 .Title {
-    text-align: left;
+  text-align: left;
 }
 
 
 #fm {
-    margin-right: 30px;
-    padding-bottom: 20px;
+  margin-right: 30px;
+  padding-bottom: 20px;
 }
 
 #sfe {
 
-    margin-right: 30px;
-    padding-bottom: 20px;
+  margin-right: 30px;
+  padding-bottom: 20px;
+}
+
+#ss {
+  margin-right: 30px;
+  padding-bottom: 20px;
 }
 
 #news {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .small {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .badge {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .none {
-    display: none;
+  display: none;
 }
 
 hr {
-    color: whitesmoke;
+  color: whitesmoke;
 
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(52, 51, 56, 0.9);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(52, 51, 56, 0.9);
 }
 
-.box{
-     background-color: rgb(79, 78, 80);
-     padding: 10px;
-     border-radius: 20px;
+.box {
+  background-color: rgb(79, 78, 80);
+  padding: 10px;
+  border-radius: 20px;
 }
 
 
- /* Átlátszó háttér, whitesmoke szöveg, eltávolítva a border és hover háttér */
-  .list-group-item {
-    background-color: transparent !important;
-    color: whitesmoke !important;
-    border: none !important;
-  }
-  .list-group-item:hover,
-  .list-group-item:focus,
-  .list-group-item.active {
-    background-color: transparent !important;
-    color: whitesmoke !important;
-    box-shadow: none !important;
-  }
+/* Átlátszó háttér, whitesmoke szöveg, eltávolítva a border és hover háttér */
+.list-group-item {
+  background-color: transparent !important;
+  color: whitesmoke !important;
+  border: none !important;
+}
 
-  /* A scrollspy tartalom háttere, hogy jól olvasható legyen */
-  .scrollspy-example {
-    position: relative;
-    height: 400px;
-    overflow-y: scroll;
-    background-color: #222; /* sötét háttér */
-    padding: 1rem;
-    border-radius: 0.3rem;
-    color: whitesmoke;
-  }
+.list-group-item:hover,
+.list-group-item:focus,
+.list-group-item.active {
+  background-color: transparent !important;
+  color: whitesmoke !important;
+  box-shadow: none !important;
+}
 
-  .marginb{
-    margin-bottom: 5;
-  }
+/* A scrollspy tartalom háttere, hogy jól olvasható legyen */
+.scrollspy-example {
+  position: relative;
+  height: 400px;
+  overflow-y: scroll;
+  background-color: #222;
+  /* sötét háttér */
+  padding: 1rem;
+  border-radius: 0.3rem;
+  color: whitesmoke;
+}
 
-  .btn-warning{
-    color: #222 !important;
-  }
+.marginb {
+  margin-bottom: 5;
+}
+
+.btn-warning {
+  color: #222 !important;
+}
+
+
+img {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}

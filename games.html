@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>SLauncher</title>
 </head>
+
 <body>
-     <div class="badge text-bg-primary" id="fm">
+    <div class="container">
+
+        <div class="col-auto">
+            <div class="badge text-bg-primary" id="fm">
+
+
                 <h2>Fantasztikus Márkó</h2>
+                <div><img src="./screenshots/fm1.png" alt="fm1.png" height="250" width="400"></div>
                 <p>Just a simple platformer game</p>
                 <small class="small">Engine: Gdevelop</small>
                 <h6>V1.2.1</h6>
@@ -20,9 +34,12 @@
                     <button id="openGameBtn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
                 </div>
             </div>
+        </div>
 
+        <div class="col-auto">
             <div class="badge text-bg-light" id="sfe">
                 <h2>Spidey - Flies eater</h2>
+                <div><img src="./screenshots/sfe1.png" alt="sfe1.png" height="250" width="400"></div>
                 <p>Catch all the flies in a short time!!</p>
                 <small class="small">Engine: Gdevelop</small>
                 <h6>V1.0</h6>
@@ -35,9 +52,13 @@
                     <button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
                 </div>
             </div>
+        </div>
 
+        <div class="col-auto">
             <div class="badge text-bg-danger" id="jumpTogether">
                 <h2>Jump Together</h2>
+                <div><img src="./screenshots/jt1.png" alt="" height="250" width="400">
+                </div>
                 <p>Jump and collect all of apple!</p>
                 <small class="small">Engine: Gdevelop</small>
                 <h6>V1.0</h6>
@@ -53,6 +74,131 @@
         </div>
 
 
-        <button id="downloadBtn"></button>
+        <div class="col-auto">
+            <div class="badge text-bg-secondary" id="ss">
+                <h2>Project SS (aka: Stranger Sphere)</h2>
+                <div><img src="./screenshots/sfe1.png" alt="sfe1.png" height="250" width="400"></div>
+                <p>Escape from the Unidentified Monsters across 4 dimension</p>
+                <small class="small">Engine: Unreal Engine 5.6</small>
+                <h6>V1.0</h6>
+                <div>
+                     <button id="downloadBtn">asd</button>
+                </div>
+                <div>
+                    <button id="openGame2Btn" class="btn btn-warning" style="margin-top: 10px;">Open Game</button>
+                </div>
+            </div> <!-- <- EZ HIÁNYZOTT -->
+        </div>
+    </div>
+    <footer>
+        <hr>
+        <p>&copy; 2025 SLauncher. All rights reserved.</p>
+    </footer>
+
+
+
+    <script>
+        // Gomb események, hogy meghívják az electron API-t
+        document.getElementById('openGameBtn').addEventListener('click', () => {
+            window.electronAPI.openGame();
+        });
+        document.getElementById('openGame2Btn').addEventListener('click', () => {
+            window.electronAPI.openGame2();
+        });
+        document.getElementById('openGame3Btn').addEventListener('click', () => {
+            window.electronAPI.openGame3();
+        });
+
+        // Gombok frissítése telepítettség alapján
+        function updateButtons(downloadBtnId, openBtnId, isInstalled) {
+            const downloadBtn = document.getElementById(downloadBtnId);
+            const openBtn = document.getElementById(openBtnId);
+            if (isInstalled) {
+                downloadBtn.style.display = 'none';
+                openBtn.style.display = 'inline-block';
+            } else {
+                downloadBtn.style.display = 'inline-block';
+                openBtn.style.display = 'none';
+            }
+        }
+
+        // Mindhárom játék telepítettségének lekérése és frissítés
+        window.electronAPI.checkFmInstalled().then(installed => {
+            updateButtons('downloadFmBtn', 'openGameBtn', installed);
+        });
+        window.electronAPI.checkSfeInstalled().then(installed => {
+            updateButtons('downloadSfeBtn', 'openGame2Btn', installed);
+        });
+        window.electronAPI.checkJtInstalled().then(installed => {
+            updateButtons('downloadJumpBtn', 'openGame3Btn', installed);
+        });
+
+        // Letöltés befejezése után is frissítjük a gombokat
+        window.electronAPI.onDownloadCompleted(() => {
+            window.electronAPI.checkFmInstalled().then(installed => {
+                updateButtons('downloadFmBtn', 'openGameBtn', installed);
+            });
+            window.electronAPI.checkSfeInstalled().then(installed => {
+                updateButtons('downloadSfeBtn', 'openGame2Btn', installed);
+            });
+            window.electronAPI.checkJtInstalled().then(installed => {
+                updateButtons('downloadJumpBtn', 'openGame3Btn', installed);
+            });
+        });
+
+
+        // discord
+        document.getElementById('discord').addEventListener('click', () => {
+            window.electronAPI.openDiscordLink();
+        });
+
+        document.getElementById('web').addEventListener('click', () => {
+            window.electronAPI.openWebLink();
+        });
+
+
+        document.getElementById('openGame4Btn').addEventListener('click', () => {
+            window.electronAPI.openGame4();
+        });
+
+        window.electronAPI.checkSsInstalled().then(installed => {
+            updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+        });
+
+        window.electronAPI.onDownloadCompleted(() => {
+            window.electronAPI.checkSsInstalled().then(installed => {
+                updateButtons('downloadSsBtn', 'openGame4Btn', installed);
+            });
+        });
+
+        const { ipcRenderer } = require('electron');
+
+        const downloadBtn = document.getElementById('downloadBtn'); // feltételezem, hogy van ilyen id-jű gombod
+
+        downloadBtn.addEventListener('click', async () => {
+            downloadBtn.disabled = true;
+            downloadBtn.innerText = 'Downloading and installing...';
+
+            const result = await ipcRenderer.invoke('download-and-install-ss');
+
+            if (result.success) {
+                alert('Letöltés és telepítés sikeres!');
+            } else {
+                alert('Hiba történt: ' + result.error);
+            }
+
+            downloadBtn.disabled = false;
+            downloadBtn.innerText = 'Download';
+        });
+
+
+        /* ....................................... UTOLSÓ ELEM ...................................... */
+        setInterval(() => {
+            window.location.reload();
+        }, 10000); // 10000 ms = 10 másodperc
+
+
+    </script>
 </body>
+
 </html>
